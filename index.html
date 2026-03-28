@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Δήλωση Συμμετοχής</title>
+  <title>Regatta Entry Management System</title>
 
   <style>
     * {
@@ -28,17 +28,17 @@
       background: rgba(241, 244, 239, 0.92);
       border-radius: 6px;
       padding: 24px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
     }
 
     .hero {
       position: relative;
       overflow: hidden;
       border-radius: 6px;
-      margin-bottom: 18px;
-      min-height: 420px;
+      margin-bottom: 14px;
+      min-height: auto;
       background-color: #dfe5df;
-      border: 1px solid rgba(0,0,0,0.06);
+      border: 1px solid rgba(0, 0, 0, 0.06);
     }
 
     .hero-bg {
@@ -46,47 +46,51 @@
       inset: 0;
       background-size: cover;
       background-position: center;
-      opacity: 0.24;
+      opacity: 0.18;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      padding: 18px 18px 16px 18px;
+      padding: 18px 18px 14px 18px;
     }
 
     .logo-row {
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .event-logo {
-      max-width: 170px;
-      max-height: 85px;
-      background: rgba(255,255,255,0.75);
-      padding: 6px;
+      max-width: 220px;
+      max-height: 110px;
+      display: block;
     }
 
-    .hero-title {
+    .app-title {
       text-align: center;
-      font-size: 22px;
+      font-size: 30px;
       font-weight: 700;
-      margin: 6px 0 12px 0;
+      margin: 6px 0 10px 0;
+      color: #2f241d;
+      line-height: 1.2;
     }
 
-    .hero-subtitle {
+    .app-subtitle {
       text-align: center;
       font-size: 18px;
-      font-weight: 700;
-      margin: 6px 0 14px 0;
+      line-height: 1.5;
+      font-weight: 500;
+      max-width: 760px;
+      margin: 0 auto 14px auto;
+      color: #2f241d;
     }
 
     .hero-notes {
-      max-width: 860px;
+      max-width: 760px;
       margin: 0 auto;
-      padding-left: 18px;
+      padding-left: 20px;
       font-size: 16px;
       line-height: 1.6;
     }
@@ -109,7 +113,7 @@
       text-align: center;
       font-size: 17px;
       font-weight: 700;
-      margin: 18px 0 6px 0;
+      margin: 14px 0 4px 0;
       letter-spacing: 0.2px;
     }
 
@@ -121,12 +125,12 @@
 
     .separator {
       border-top: 1px solid #7a6c62;
-      margin: 8px 0 18px 0;
+      margin: 8px 0 14px 0;
     }
 
     .notice-box {
       border: 2px solid #8da170;
-      background: rgba(255,255,255,0.45);
+      background: rgba(255, 255, 255, 0.45);
       text-align: center;
       padding: 0;
       margin: 0 auto 14px auto;
@@ -172,7 +176,7 @@
 
     .search-area {
       max-width: 360px;
-      margin: 14px auto 8px auto;
+      margin: 12px auto 8px auto;
       text-align: center;
     }
 
@@ -188,7 +192,7 @@
 
     .btn {
       display: inline-block;
-      min-width: 190px;
+      min-width: 210px;
       height: 42px;
       padding: 0 18px;
       border: none;
@@ -214,6 +218,7 @@
       margin: 12px 0 10px 0;
       font-size: 14px;
       font-weight: 700;
+      scroll-margin-top: 24px;
     }
 
     .status.loading {
@@ -224,7 +229,7 @@
       display: inline-block;
       width: 16px;
       height: 16px;
-      border: 3px solid rgba(0,0,0,0.15);
+      border: 3px solid rgba(0, 0, 0, 0.15);
       border-top: 3px solid #4d8b1f;
       border-radius: 50%;
       animation: spin 0.9s linear infinite;
@@ -242,8 +247,9 @@
       max-width: 760px;
       margin: 12px auto 16px auto;
       border: 1px solid #bfb6aa;
-      background: rgba(255,255,255,0.72);
+      background: rgba(255, 255, 255, 0.72);
       padding: 14px;
+      scroll-margin-top: 24px;
     }
 
     .result-title {
@@ -257,6 +263,7 @@
       display: none;
       text-align: center;
       margin-bottom: 16px;
+      scroll-margin-top: 24px;
     }
 
     .actions .btn {
@@ -266,6 +273,7 @@
     .form-wrap {
       display: none;
       margin-top: 14px;
+      scroll-margin-top: 24px;
     }
 
     #formFrame {
@@ -286,8 +294,7 @@
       }
 
       .hero {
-        min-height: auto;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
       }
 
       .hero-content {
@@ -295,23 +302,25 @@
       }
 
       .logo-row {
-        justify-content: center;
-        margin-bottom: 10px;
+        justify-content: flex-start;
+        margin-bottom: 12px;
       }
 
       .event-logo {
-        max-width: 140px;
-        max-height: 70px;
+        max-width: 170px;
+        max-height: 85px;
       }
 
-      .hero-title {
-        font-size: 18px;
+      .app-title {
+        font-size: 22px;
+        line-height: 1.25;
         margin: 4px 0 8px 0;
       }
 
-      .hero-subtitle {
+      .app-subtitle {
         font-size: 15px;
-        margin: 4px 0 10px 0;
+        line-height: 1.5;
+        margin: 0 auto 12px auto;
       }
 
       .hero-notes {
@@ -365,6 +374,10 @@
         min-width: 0;
       }
 
+      .actions .btn {
+        margin: 4px 0;
+      }
+
       #formFrame {
         height: 1300px;
       }
@@ -380,24 +393,20 @@
 
         <div class="hero-content">
           <div class="logo-row">
-            <img id="eventLogo" class="event-logo" src="" alt="Logo αγώνα" />
+            <img id="eventLogo" class="event-logo" src="" alt="Regatta Entry Management System" />
           </div>
 
-          <div class="hero-title">ΔΗΛΩΣΗ ΣΥΜΜΕΤΟΧΗΣ</div>
+          <div class="app-title">Regatta Entry Management System</div>
 
-          <div class="hero-subtitle" id="eventSubtitle1"></div>
+          <div class="app-subtitle">
+            Βρείτε το σκάφος σας με τον αριθμό ιστίου και συνεχίστε στην καταχώριση συμμετοχής.
+          </div>
 
           <ul class="hero-notes" id="eventNotes"></ul>
         </div>
       </div>
 
-      <div class="section-title">
-        ΑΝΑΖΗΤΗΣΗ ΤΩΝ ΣΤΟΙΧΕΙΩΝ ΤΟΥ ΣΚΑΦΟΥΣ ΜΕ ΤΟΝ ΑΡΙΘΜΟ ΙΣΤΙΟΥ
-      </div>
-
-      <div class="section-subtitle">
-        (Αριθμός ιστίου χωρίς γράμματα)
-      </div>
+     
 
       <div class="separator"></div>
 
@@ -409,12 +418,12 @@
           Για να συνεχίσετε θα πρέπει να έχετε πιστοποιητικό της Εθνικής Αρχής για το έτος 2026.
         </div>
         <div class="line5" id="noticeInfoText">
-          Για πληροφορίες: ΓΡΑΜΜΑΤΕΙΑ ΑΓΩΝΑ ΤΗΛ.: 210 4123357
+          Για πληροφορίες: ΓΡΑΜΜΑΤΕΙΑ ΑΓΩΝΑ ΤΗΛ.: 210 4101 114
         </div>
       </div>
 
       <div class="search-area">
-        <input type="text" id="sailNumber" placeholder="" inputmode="numeric" />
+        <input type="text" id="sailNumber" placeholder="Αριθμός ιστίου" inputmode="numeric" />
         <button class="btn" id="searchBtn" type="button">ΑΝΑΖΗΤΗΣΗ</button>
       </div>
 
@@ -425,19 +434,19 @@
       </div>
 
       <div class="actions" id="actions">
-        <button class="btn" id="continueBtn" type="button">ΣΥΝΕΧΕΙΑ ΣΤΗ ΦΟΡΜΑ</button>
+        <button class="btn" id="continueBtn" type="button">ΣΥΝΕΧΕΙΑ ΣΤΗ ΣΥΜΜΕΤΟΧΗ</button>
         <button class="btn secondary" id="newSearchBtn" type="button">ΝΕΑ ΑΝΑΖΗΤΗΣΗ</button>
       </div>
 
       <div class="form-wrap" id="formWrap">
-        <iframe id="formFrame" src=""></iframe>
+        <iframe id="formFrame" src="" title="Καταχώριση συμμετοχής"></iframe>
       </div>
     </div>
   </div>
 
   <script>
     // =========================================
-    // 1. ΕΔΩ ΑΛΛΑΖΕΙΣ ΤΑ ΣΤΟΙΧΕΙΑ ΚΑΘΕ ΑΓΩΝΑ
+    // 1. ΒΑΣΙΚΕΣ ΡΥΘΜΙΣΕΙΣ ΕΦΑΡΜΟΓΗΣ
     // =========================================
 
     const LOOKUP_URL = "https://script.google.com/macros/s/AKfycbxsoVuhig7l4owjiAt8LrF8USsKefVEuVo3ajS6oFYWJwPf2Hw4l06bsNQwkkeT0Ys3/exec";
@@ -446,19 +455,17 @@
     const EVENT_LOGO = "https://github.com/jsamartzis-png/logos/blob/main/logo_EntryFlow_removebg-preview.png?raw=true";
     const EVENT_BACKGROUND = "background.jpg";
 
-    const EVENT_SUBTITLE_1 = "σε αγώνα ιστιοπλοΐας ανοιχτής θαλάσσης";
-
     const EVENT_NOTES = [
-      "Με τη χρήση αυτής της εφαρμογής, μπορείτε εύκολα να υποβάλετε τα απαραίτητα έγγραφα και να ολοκληρώσετε την πληρωμή του παραβόλου (όλα σε ένα σημείο).",
-      "Τα προσωπικά δεδομένα που καταχωρούνται εδώ, χρησιμοποιούνται αποκλειστικά για τη διαχείριση της συμμετοχής σας στον αγώνα, σύμφωνα με την ισχύουσα νομοθεσία.",
-      'Διαβάστε την <a href="https://example.com/privacy-policy" target="_blank" rel="noopener noreferrer">Πολιτική Απορρήτου</a> και τους <a href="https://example.com/terms" target="_blank" rel="noopener noreferrer">Όρους Χρήσης</a> πριν συνεχίσετε.'
+      "Με τη χρήση αυτής της εφαρμογής, μπορείτε εύκολα να υποβάλετε τα απαραίτητα έγγραφα και να ολοκληρώσετε την πληρωμή του παραβόλου (ολα σε ένα σημείο)..",
+      "Τα προσωπικά δεδομένα που καταχωρούνται εδώ, χρησιμοποιούνται αποκλειστικά για τη διαχείριση της συμμετοχής στον αγώνα, σύμφωνα με την ισχύουσα νομοθεσία..",
+      'Διαβάσετε την <a href="https://example.com/privacy-policy" target="_blank" rel="noopener noreferrer">Πολιτική Απορρήτου</a> και τους <a href="https://example.com/terms" target="_blank" rel="noopener noreferrer">Όρους Χρήσης</a>.'
     ];
 
     const NOTICE_YEAR_TEXT =
       "Για να συνεχίσετε θα πρέπει να έχετε πιστοποιητικό της Εθνικής Αρχής για το έτος 2026.";
 
     const NOTICE_INFO_TEXT =
-      "Για πληροφορίες: ΓΡΑΜΜΑΤΕΙΑ ΑΓΩΝΑ ΤΗΛ.: 210 4123357";
+      "Για πληροφορίες: ΓΡΑΜΜΑΤΕΙΑ ΑΓΩΝΑ ΤΗΛ.: 210 4101 113";
 
     // =========================================
     // 2. UNIQUE NAMES ΤΗΣ JOTFORM
@@ -495,10 +502,16 @@
 
     let lastFoundData = null;
 
+    function scrollToElement(el) {
+      if (!el) return;
+      setTimeout(() => {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 150);
+    }
+
     function setupHero() {
       document.getElementById("eventLogo").src = EVENT_LOGO;
       document.getElementById("heroBg").style.backgroundImage = "url('" + EVENT_BACKGROUND + "')";
-      document.getElementById("eventSubtitle1").textContent = EVENT_SUBTITLE_1;
       document.getElementById("noticeYearText").textContent = NOTICE_YEAR_TEXT;
       document.getElementById("noticeInfoText").textContent = NOTICE_INFO_TEXT;
 
@@ -512,17 +525,22 @@
       });
     }
 
-    function setStatus(message, isError = false, isLoading = false) {
+    function setStatus(message, isError = false, isLoading = false, shouldScroll = false) {
       if (isLoading) {
         statusBox.classList.add("loading");
         statusBox.innerHTML = '<span class="spinner"></span>' + (message || "");
         statusBox.style.color = "#7a5a00";
+        if (shouldScroll) scrollToElement(statusBox);
         return;
       }
 
       statusBox.classList.remove("loading");
       statusBox.textContent = message || "";
       statusBox.style.color = isError ? "#b00020" : "#2e7d32";
+
+      if (shouldScroll && message) {
+        scrollToElement(statusBox);
+      }
     }
 
     function showResult(data) {
@@ -534,6 +552,8 @@
 
       resultCard.style.display = "block";
       actions.style.display = "block";
+
+      scrollToElement(resultCard);
     }
 
     function hideResult() {
@@ -571,12 +591,12 @@
       const sailNumber = sailInput.value.trim();
 
       if (!sailNumber) {
-        setStatus("Παρακαλώ πληκτρολόγησε αριθμό ιστίου.", true);
+        setStatus("Παρακαλώ πληκτρολόγησε αριθμό ιστίου.", true, false, true);
         hideResult();
         return;
       }
 
-      setStatus("Γίνεται αναζήτηση...", false, true);
+      setStatus("Γίνεται αναζήτηση...", false, true, true);
       hideResult();
 
       try {
@@ -584,12 +604,12 @@
         const json = await response.json();
 
         if (!json.ok) {
-          setStatus("Σφάλμα στο σύστημα αναζήτησης.", true);
+          setStatus("Σφάλμα στο σύστημα αναζήτησης.", true, false, true);
           return;
         }
 
         if (!json.found) {
-          setStatus("Δεν βρέθηκαν στοιχεία για αυτόν τον αριθμό ιστίου.", true);
+          setStatus("Δεν βρέθηκαν στοιχεία για αυτόν τον αριθμό ιστίου.", true, false, true);
           return;
         }
 
@@ -598,13 +618,13 @@
         setStatus("Η αναζήτηση ολοκληρώθηκε.");
       } catch (err) {
         console.error(err);
-        setStatus("Σφάλμα επικοινωνίας με το σύστημα αναζήτησης.", true);
+        setStatus("Σφάλμα επικοινωνίας με το σύστημα αναζήτησης.", true, false, true);
       }
     }
 
     function continueToForm() {
       if (!lastFoundData) {
-        setStatus("Δεν υπάρχουν στοιχεία για συνέχεια.", true);
+        setStatus("Δεν υπάρχουν στοιχεία για συνέχεια.", true, false, true);
         return;
       }
 
