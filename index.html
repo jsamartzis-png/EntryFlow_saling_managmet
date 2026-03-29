@@ -109,20 +109,6 @@
       opacity: 0.85;
     }
 
-    .section-title {
-      text-align: center;
-      font-size: 17px;
-      font-weight: 700;
-      margin: 14px 0 4px 0;
-      letter-spacing: 0.2px;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      font-size: 13px;
-      margin-bottom: 8px;
-    }
-
     .separator {
       border-top: 1px solid #7a6c62;
       margin: 8px 0 14px 0;
@@ -272,7 +258,7 @@
 
     .form-wrap {
       display: none;
-      margin-top: 14px;
+      margin-top: 0;
       scroll-margin-top: 24px;
     }
 
@@ -333,16 +319,6 @@
         margin-bottom: 8px;
       }
 
-      .section-title {
-        font-size: 15px;
-        margin: 12px 0 4px 0;
-      }
-
-      .section-subtitle {
-        font-size: 12px;
-        margin-bottom: 6px;
-      }
-
       .separator {
         margin: 6px 0 14px 0;
       }
@@ -387,55 +363,54 @@
 <body>
   <div class="page">
     <div class="panel">
+      <div id="searchScreen">
+        <div class="hero">
+          <div class="hero-bg" id="heroBg"></div>
 
-      <div class="hero">
-        <div class="hero-bg" id="heroBg"></div>
+          <div class="hero-content">
+            <div class="logo-row">
+              <img id="eventLogo" class="event-logo" src="" alt="Regatta Entry Management System" />
+            </div>
 
-        <div class="hero-content">
-          <div class="logo-row">
-            <img id="eventLogo" class="event-logo" src="" alt="Regatta Entry Management System" />
+            <div class="app-title">Regatta Entry Management System</div>
+
+            <div class="app-subtitle">
+              Βρείτε το σκάφος σας με τον αριθμό ιστίου και συνεχίστε στην καταχώριση συμμετοχής.
+            </div>
+
+            <ul class="hero-notes" id="eventNotes"></ul>
           </div>
+        </div>
 
-          <div class="app-title">Regatta Entry Management System</div>
+        <div class="separator"></div>
 
-          <div class="app-subtitle">
-            Βρείτε το σκάφος σας με τον αριθμό ιστίου και συνεχίστε στην καταχώριση συμμετοχής.
+        <div class="notice-box">
+          <div class="line1">Η ΑΝΑΖΗΤΗΣΗ ΓΙΝΕΤΑΙ ΜΟΝΟ ΜΕ ΤΟΝ ΑΡΙΘΜΟ ΙΣΤΙΟΥ.</div>
+          <div class="line2">Παρακαλούμε συμπληρώστε το πεδίο αναζήτησης</div>
+          <div class="line3">ΠΡΟΣΟΧΗ</div>
+          <div class="line4" id="noticeYearText">
+            Για να συνεχίσετε θα πρέπει να έχετε πιστοποιητικό της Εθνικής Αρχής για το έτος 2026.
           </div>
-
-          <ul class="hero-notes" id="eventNotes"></ul>
+          <div class="line5" id="noticeInfoText">
+            Για πληροφορίες: ΓΡΑΜΜΑΤΕΙΑ ΑΓΩΝΑ ΤΗΛ.: 210 4101 113
+          </div>
         </div>
-      </div>
 
-     
-
-      <div class="separator"></div>
-
-      <div class="notice-box">
-        <div class="line1">Η ΑΝΑΖΗΤΗΣΗ ΓΙΝΕΤΑΙ ΜΟΝΟ ΜΕ ΤΟΝ ΑΡΙΘΜΟ ΙΣΤΙΟΥ.</div>
-        <div class="line2">Παρακαλούμε συμπληρώστε το πεδίο αναζήτησης</div>
-        <div class="line3">ΠΡΟΣΟΧΗ</div>
-        <div class="line4" id="noticeYearText">
-          Για να συνεχίσετε θα πρέπει να έχετε πιστοποιητικό της Εθνικής Αρχής για το έτος 2026.
+        <div class="search-area">
+          <input type="text" id="sailNumber" placeholder="Αριθμός ιστίου" inputmode="numeric" />
+          <button class="btn" id="searchBtn" type="button">ΑΝΑΖΗΤΗΣΗ</button>
         </div>
-        <div class="line5" id="noticeInfoText">
-          Για πληροφορίες: ΓΡΑΜΜΑΤΕΙΑ ΑΓΩΝΑ ΤΗΛ.: 210 4101 114
+
+        <div class="status" id="status"></div>
+
+        <div class="result-card" id="resultCard">
+          <div class="result-title" id="resultText"></div>
         </div>
-      </div>
 
-      <div class="search-area">
-        <input type="text" id="sailNumber" placeholder="Αριθμός ιστίου" inputmode="numeric" />
-        <button class="btn" id="searchBtn" type="button">ΑΝΑΖΗΤΗΣΗ</button>
-      </div>
-
-      <div class="status" id="status"></div>
-
-      <div class="result-card" id="resultCard">
-        <div class="result-title" id="resultText"></div>
-      </div>
-
-      <div class="actions" id="actions">
-        <button class="btn" id="continueBtn" type="button">ΣΥΝΕΧΕΙΑ ΣΤΗ ΣΥΜΜΕΤΟΧΗ</button>
-        <button class="btn secondary" id="newSearchBtn" type="button">ΝΕΑ ΑΝΑΖΗΤΗΣΗ</button>
+        <div class="actions" id="actions">
+          <button class="btn" id="continueBtn" type="button">ΣΥΝΕΧΕΙΑ ΣΤΗ ΣΥΜΜΕΤΟΧΗ</button>
+          <button class="btn secondary" id="newSearchBtn" type="button">ΝΕΑ ΑΝΑΖΗΤΗΣΗ</button>
+        </div>
       </div>
 
       <div class="form-wrap" id="formWrap">
@@ -445,10 +420,6 @@
   </div>
 
   <script>
-    // =========================================
-    // 1. ΒΑΣΙΚΕΣ ΡΥΘΜΙΣΕΙΣ ΕΦΑΡΜΟΓΗΣ
-    // =========================================
-
     const LOOKUP_URL = "https://script.google.com/macros/s/AKfycbxsoVuhig7l4owjiAt8LrF8USsKefVEuVo3ajS6oFYWJwPf2Hw4l06bsNQwkkeT0Ys3/exec";
     const JOTFORM_BASE_URL = "https://form.jotform.com/260849167199372";
 
@@ -456,19 +427,15 @@
     const EVENT_BACKGROUND = "background.jpg";
 
     const EVENT_NOTES = [
-  "Με τη χρήση αυτής της εφαρμογής, μπορείτε εύκολα να υποβάλετε τα απαραίτητα έγγραφα και να ολοκληρώσετε την πληρωμή του παραβόλου (όλα σε ένα σημείο).",
-  'Διαβάστε την <a href="https://docs.google.com/document/d/1_ThpUPcy-w1-D5hScVCcKZ2csmjs6_m-mIkEYNY9c5I/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Πολιτική Απορρήτου</a> και τους <a href="https://docs.google.com/document/d/1Btn0eMNSZotVyH3n7RETC3ur8lZ4V_2I/edit?usp=sharing&ouid=115039995651229449950&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">Όρους Χρήσης</a>.'
-];
+      "Με τη χρήση αυτής της εφαρμογής, μπορείτε εύκολα να υποβάλετε τα απαραίτητα έγγραφα και να ολοκληρώσετε την πληρωμή του παραβόλου (όλα σε ένα σημείο).",
+      'Διαβάστε την <a href="https://docs.google.com/document/d/1_ThpUPcy-w1-D5hScVCcKZ2csmjs6_m-mIkEYNY9c5I/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Πολιτική Απορρήτου</a> και τους <a href="https://docs.google.com/document/d/1Btn0eMNSZotVyH3n7RETC3ur8lZ4V_2I/edit?usp=sharing&ouid=115039995651229449950&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">Όρους Χρήσης</a>.'
+    ];
 
     const NOTICE_YEAR_TEXT =
       "Για να συνεχίσετε θα πρέπει να έχετε πιστοποιητικό της Εθνικής Αρχής για το έτος 2026.";
 
     const NOTICE_INFO_TEXT =
       "Για πληροφορίες: ΓΡΑΜΜΑΤΕΙΑ ΑΓΩΝΑ ΤΗΛ.: 210 4101 113";
-
-    // =========================================
-    // 2. UNIQUE NAMES ΤΗΣ JOTFORM
-    // =========================================
 
     const fieldNames = {
       yacht_name: "age",
@@ -498,6 +465,7 @@
     const actions = document.getElementById("actions");
     const formWrap = document.getElementById("formWrap");
     const formFrame = document.getElementById("formFrame");
+    const searchScreen = document.getElementById("searchScreen");
 
     let lastFoundData = null;
 
@@ -529,7 +497,10 @@
         statusBox.classList.add("loading");
         statusBox.innerHTML = '<span class="spinner"></span>' + (message || "");
         statusBox.style.color = "#7a5a00";
-        if (shouldScroll) scrollToElement(statusBox);
+
+        if (shouldScroll) {
+          scrollToElement(statusBox);
+        }
         return;
       }
 
@@ -629,6 +600,8 @@
 
       const formUrl = buildPrefillUrl(lastFoundData);
       formFrame.src = formUrl;
+
+      searchScreen.style.display = "none";
       formWrap.style.display = "block";
 
       setTimeout(() => {
@@ -637,6 +610,9 @@
     }
 
     function resetSearch() {
+      searchScreen.style.display = "block";
+      formWrap.style.display = "none";
+      formFrame.src = "";
       sailInput.value = "";
       setStatus("");
       hideResult();
