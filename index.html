@@ -536,22 +536,24 @@ const fieldNames = {
 function buildPrefillUrl(data) {
   const params = new URLSearchParams();
 
-params.set(fieldNames.yacht_name, data.yacht_name || "");
-params.set(fieldNames.sail_letters, data.sail_letters || "");
-params.set(fieldNames.sail_number, data.sail_number || "");
-params.set(fieldNames.yacht_type, data.yacht_type || "");
-params.set(fieldNames.club, data.club || "");
-params.set(fieldNames.aph, data.aph_initial || "");
-params.set(fieldNames.cert_date, data.certdate_last || "");
-params.set(fieldNames.saronic_cat, data.gph || "");
-params.set(fieldNames.aph_club, data.aph_club || "");
-params.set(fieldNames.aph_intl, data.aph_intl || "");
-params.set(fieldNames.aph_ns, data.aph_ns || "");
-params.set(fieldNames.aph_dh, data.aph_dh || "");
-params.set(fieldNames.last_certificate, data.certdate_last || "");
-params.set(fieldNames.special_cat, data.special_category || "");
-params.set(fieldNames.aph_initial, data.aph_initial || "");
+  params.set(fieldNames.yacht_name, data.yacht_name || "");
+  params.set(fieldNames.sail_letters, data.sail_letters || "");
+  params.set(fieldNames.sail_number, data.sail_number || "");
+  params.set(fieldNames.yacht_type, data.yacht_type || "");
+  params.set(fieldNames.club, data.club || "");
+  params.set(fieldNames.aph, data.aph_initial || "");
+  params.set(fieldNames.cert_date, data.certdate_last || "");
+  params.set(fieldNames.saronic_cat, data.gph || "");
+  params.set(fieldNames.aph_club, data.aph_club || "");
+  params.set(fieldNames.aph_intl, data.aph_intl || "");
+  params.set(fieldNames.aph_ns, data.aph_ns || "");
+  params.set(fieldNames.aph_dh, data.aph_dh || "");
+  params.set(fieldNames.last_certificate, data.certdate_last || "");
+  params.set(fieldNames.special_cat, data.special_category || "");
+  params.set(fieldNames.aph_initial, data.aph_initial || "");
 
+  return JOTFORM_BASE_URL + "?" + params.toString();
+}
     async function searchBoat() {
       const sailNumber = sailInput.value.trim();
 
