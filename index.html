@@ -109,13 +109,28 @@
       opacity: 0.85;
     }
 
-    .section-title {
-      text-align: center;
-      font-size: 17px;
-      font-weight: 700;
-      margin: 14px 0 4px 0;
-      letter-spacing: 0.2px;
-    }
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  text-align: center;
+  font-size: 38px;
+  font-weight: 900;
+  margin: 22px auto 24px auto;
+  letter-spacing: 3px;
+  color: #0d5e92;
+  line-height: 1;
+}
+
+.section-title::before,
+.section-title::after {
+  content: "";
+  flex: 1;
+  max-width: 310px;
+  height: 3px;
+  background: #0d5e92;
+}
 
     .section-subtitle {
       text-align: center;
@@ -332,11 +347,16 @@
       .hero-notes li {
         margin-bottom: 8px;
       }
+.section-title {
+  font-size: 28px;
+  gap: 14px;
+  margin: 18px auto 20px auto;
+}
 
-      .section-title {
-        font-size: 15px;
-        margin: 12px 0 4px 0;
-      }
+.section-title::before,
+.section-title::after {
+  max-width: 90px;
+}
 
       .section-subtitle {
         font-size: 12px;
