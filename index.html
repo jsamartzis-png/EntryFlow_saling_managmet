@@ -611,7 +611,7 @@ function buildPrefillUrl(data) {
 
   params.set(fieldNames.aph, formatForJotformNumber(data.aph_initial));
   params.set(fieldNames.cert_date, data.certdate_last || "");
-  params.set(fieldNames.cert_type, data.initial_category || "");
+  params.set(fieldNames.cert_type, data.initial_category || data.Initial_Category || "");
   params.set(fieldNames.saronic_cat, formatForJotformNumber(data.gph));
   params.set(fieldNames.aph_club, formatForJotformNumber(data.aph_club));
   params.set(fieldNames.aph_intl, formatForJotformNumber(data.aph_intl));
