@@ -650,10 +650,10 @@ function buildPrefillUrl(data) {
           return;
         }
 
-       lastFoundData = json.data || {};
-       console.log(lastFoundData);
-       showResult(lastFoundData);
-        setStatus("Η αναζήτηση ολοκληρώθηκε.");
+      lastFoundData = json.data || {};
+console.log("DATA ΠΟΥ ΗΡΘΑΝ:", lastFoundData);
+showResult(lastFoundData);
+setStatus("Η αναζήτηση ολοκληρώθηκε.");
       } catch (err) {
         console.error(err);
         setStatus("Σφάλμα επικοινωνίας με το σύστημα αναζήτησης.", true, false, true);
